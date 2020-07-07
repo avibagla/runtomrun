@@ -1,0 +1,22 @@
+/* CSS files add styling rules to your content */
+
+body {
+  font-family: helvetica, arial, sans-serif;
+  margin: 2em;
+}
+
+h1 {
+  font-style: italic;
+  color: #373fff;
+}
+
+
+.hidden{
+/*   //hidden videos */
+  display: none;
+}
+
+.current_video{
+  display: block;
+  width: 100%;
+}
