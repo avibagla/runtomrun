@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var videos = {};
 
   var gameStart = document.getElementById("game-start-button");
-  
+  var bottomText = document.getElementById("bottom-text");
+
 
   var initializeGame = function() {
     var video_dict = {
@@ -29,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     gameStart.classList.add("hidden");
 
     var gameArea = document.getElementById("game-area");
+
 
     // source.setAttribute('src', video_dict["waiting"]);
     // video.appendChild(source);
@@ -50,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     videos["waiting"].classList.remove("hidden");
     videos["waiting"].classList.add("current_video");
+    bottomText.innerHTML = "Tom is <b><i>ready to run<i/></b>";
   };
   
 
@@ -59,6 +62,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   function getKeyAndSwitch(e) {
     var key_code = e.which || e.keycode;
     var newDirection = cruiseDirection;
+    console.log(e.which);
+
     switch (key_code) {
       case 37: //left arrow key
       case 65: //a
@@ -80,15 +85,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
         newDirection = cruiseDirection;
         break;
     }
+    console.log(newDirection);
+
 
     return newDirection;
   }
 
-  document.addEventListener("keydown", e => {
+  var gameUpdate = function(newDirection){
     //detecting arrow key down and swapping the video based on it. also cancel timeout
-    clearTimeout(timeout);
-    e.preventDefault();
-    var newDirection = getKeyAndSwitch(e);
     if (newDirection !== cruiseDirection) {
       //"its a new direction!"
       // video.pause();
@@ -100,20 +104,73 @@ document.addEventListener("DOMContentLoaded", function(event) {
       videos[newDirection].classList.remove("hidden");
       videos[cruiseDirection].classList.remove("current_video");
       cruiseDirection = newDirection;
+      var newText = "";
+      switch (newDirection) {
+        case "left": newText = "Tom is running to the <b>left</b>"; break;
+        case "right": newText = "Tom is running to the <b>right</b>"; break;
+        case "up": newText = "Tom is running <b>away</b>"; break;
+        case "down": newText = "Tom is running <b>towards you</b>"; break;
+        default: break;
+      }
+
+      bottomText.innerHTML = newText;
+
     }
+  }
+
+  document.addEventListener("keydown", e => {
+    clearTimeout(timeout);
+    e.preventDefault();
+    var newDirection = getKeyAndSwitch(e);
+    gameUpdate(newDirection);
   });
 
-  document.addEventListener("keyup", e => {
+  var pausedGame = function(){
     videos["stopped"].load();
     //they let go of the keys, and it gets risky
-    timeout = setTimeout(function() {
+    timeout = setTimeout(function () {
       //starts it over
       videos["stopped"].play();
       videos[cruiseDirection].classList.add("hidden");
       videos[cruiseDirection].classList.remove("current_video");
       videos["stopped"].classList.add("current_video");
       videos["stopped"].classList.remove("hidden");
+      bottomText.innerHTML = "Tom is <b><i>dancing<i/></b>";
       cruiseDirection = "stopped";
-    }, 1000);
+    }, 1500);
+  }
+
+  document.addEventListener("keyup", pausedGame);
+
+  document.getElementById("mobile-gamepad").addEventListener("mouseup", pausedGame);
+
+
+  document.getElementById("mobile-1").addEventListener("mousedown", e =>{
+    clearTimeout(timeout);
+    e.preventDefault();
+    gameUpdate("up");
   });
+
+  document.getElementById("mobile-2").addEventListener("mousedown", e => {
+    clearTimeout(timeout);
+    e.preventDefault();
+    gameUpdate("left");
+  });
+
+  document.getElementById("mobile-3").addEventListener("mousedown", e => {
+    clearTimeout(timeout);
+    e.preventDefault();
+    gameUpdate("right");
+  });
+
+  document.getElementById("mobile-4").addEventListener("mousedown", e => {
+    clearTimeout(timeout);
+    e.preventDefault();
+    gameUpdate("down");
+  });
+
+
+
 });
+
+

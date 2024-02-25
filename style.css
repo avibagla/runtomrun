@@ -1,13 +1,29 @@
 /* CSS files add styling rules to your content */
 
+html{
+  background-color: #222;
+}
+
 body {
-  font-family: helvetica, arial, sans-serif;
-  margin: 2em;
+  font-family: "brevia", sans-serif;  
+  color:#ddd;
+  text-align: center;
 }
 
 h1 {
+  font-family: "mundial", sans-serif;
+  font-weight: 700;
   font-style: italic;
-  color: #373fff;
+  font-size: 4em;
+  color: #ee2222;
+  text-align: center;
+  margin: 0;
+}
+
+p{
+  font-family: "brevia", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 
@@ -16,7 +32,48 @@ h1 {
   display: none;
 }
 
+#game-area{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+}
+
 .current_video{
   display: block;
-  width: 100%;
+  width: 400px;
+  /* border: 10px solid #D60270; */
+
+}
+
+
+#game-start-button{
+  width:300px;
+  height:100px;
+  font-size: 2em;
+  font-family: "brevia", sans-serif;
+  font-weight: 700;
+  background-color:aquamarine;
+  font-style: italic;
+}
+
+button:hover {
+  box-shadow: 5px 5px #0038A8;
+}
+button {
+  border: 3px solid #000000;
+  box-sizing: border-box;
+  border-radius: 4px;
+  /* padding: 0.5rem 1rem; */
+  transition: 200ms;
+}
+
+
+
+#mobile-gamepad {
+  font-size: 3em;
+}
+
+#mobile-gamepad div span{
+  cursor:pointer;
 }
