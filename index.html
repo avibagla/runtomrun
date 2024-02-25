@@ -11,14 +11,16 @@
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="https://use.typekit.net/dbv3zpb.css">
     <link rel="stylesheet" href="./style.css">
+
     
     <!-- import the webpage's javascript file -->
+    <script src="./gamecontroller/dist/gamecontroller.js"></script>
     <script src="./script.js" defer></script>
   </head>  
   <body>
     <h1>Run Tom, Run!</h1>
     <p id="top-text">
-      Use the arrow keys or WASD to control him.
+      Use the arrow keys, a controller, or WASD to control him.
     </p>
     
     <div id="game-area">
@@ -35,19 +37,21 @@
       <!-- Use the arrow keys or WASD to control him. -->
     </p>
 
-    <div id="mobile-gamepad">
-      <div id="mobile-1"><span>⬆️</span></div>
+    <div id="mobile-gamepad" class="hidden">
+      <div><button id="mobile-1" class="press-up"></button></div>
       <div id="middle">
-        <span id="mobile-2">⬅️</span>
-        <span id="space-between">&nbsp; &nbsp;</span>
-        <span id="mobile-3">➡️</span>
+        <button class="press-left" id="mobile-2"></button>
+        <button class="press-down" id="mobile-4"></button>
+        <!-- <button id="space-between">&nbsp; &nbsp;</button> -->
+        <button class="press-right" id="mobile-3"></button>
       </div>
-      <div id="mobile-4"><span>⬇️</span></div>
     </div>
     
-    
+      <footer class="footer">
+        <p>made by <a href="//www.avibagla.com" target="_blank"> Avi Bagla</a></p>
+      </footer>
   
 <!--     <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div> -->
-    <script src="https://button.glitch.me/button.js" defer></script>
+    <!-- <script src="https://button.glitch.me/button.js" defer></script> -->
   </body>
 </html>

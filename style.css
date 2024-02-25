@@ -8,13 +8,20 @@ body {
   font-family: "brevia", sans-serif;  
   color:#ddd;
   text-align: center;
+  height: 100%;
+  /* overflow-y: hidden;
+  overflow-x: hidden; */
+}
+
+div{
+  padding: 0;
 }
 
 h1 {
   font-family: "mundial", sans-serif;
   font-weight: 700;
   font-style: italic;
-  font-size: 4em;
+  font-size: 3em;
   color: #ee2222;
   text-align: center;
   margin: 0;
@@ -24,6 +31,13 @@ p{
   font-family: "brevia", sans-serif;
     font-weight: 400;
     font-style: normal;
+      -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 
@@ -41,7 +55,7 @@ p{
 
 .current_video{
   display: block;
-  width: 400px;
+  width: 500px;
   /* border: 10px solid #D60270; */
 
 }
@@ -57,10 +71,10 @@ p{
   font-style: italic;
 }
 
-button:hover {
+#game-start-button:hover {
   box-shadow: 5px 5px #0038A8;
 }
-button {
+#game-start-button {
   border: 3px solid #000000;
   box-sizing: border-box;
   border-radius: 4px;
@@ -72,8 +86,109 @@ button {
 
 #mobile-gamepad {
   font-size: 3em;
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
+
 
 #mobile-gamepad div span{
   cursor:pointer;
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem auto 0;
+  padding: 1rem 0 0.75rem 0;
+  width: 100%;
+  flex-wrap: wrap;
+  /* border-top: 4px solid #fff; */
+}
+
+.footer a {
+    transition: 200ms;
+}
+
+.footer a:not(.btn--remix):link,
+a:not(.btn--remix):visited {
+  font-family: "brevia", sans-serif;
+    color: #ddd;
+
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.2rem;
+  /* color: #000; */
+  text-decoration: none;
+  border-style: none;
+}
+
+.footer a:hover {
+  background: #ddd;
+  color:#000000;
+}
+
+.footer .links {
+  padding: 0.5rem 1rem 1.5rem;
+  white-space: nowrap;
+}
+
+
+#mobile-gamepad {
+  transition: 400ms;
+}
+
+#mobile-gamepad button {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+#mobile-gamepad button:active {
+  background-color: aqua;
+}
+
+
+#mobile-gamepad .active-button{
+  background-color: aqua;
+}
+
+
+.press-up{
+  background-image: url("./images/tom.gif");
+  background-size: cover;
+}
+
+.press-left{
+  background: url("./images/tom.gif");
+  background-size: cover;
+  transform: rotate(270deg);
+}
+
+.press-right {
+  background: url("./images/tom.gif");
+  background-size: cover;
+  transform: rotate(90deg);
+}
+
+.press-down {
+  background: url("./images/tom.gif");
+  background-size: cover;
+  transform: rotate(180deg);
+}
+
+
