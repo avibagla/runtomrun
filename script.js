@@ -9,12 +9,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var timeout = "";
   var gamePadTimeout = "";
   var videos = {};
+  var gameStarted = false;
 
   var gameStart = document.getElementById("game-start-button");
   var bottomText = document.getElementById("bottom-text");
 
 
   var initializeGame = function() {
+    gameStarted=true;
     var video_dict = {
       left:
         "https://cdn.glitch.com/438676d6-197f-4188-93aa-71e99e4cf218%2Fleft.mp4?v=1594022781234",
@@ -91,8 +93,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
     return newDirection;
-  }
 
+  }
   var gameUpdate = function(newDirection){
     //detecting arrow key down and swapping the video based on it. also cancel timeout
     if (newDirection !== cruiseDirection) {
@@ -136,20 +138,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var pausedGame = function(){
     videos["stopped"].load();
     //they let go of the keys, and it gets risky
-    timeout = setTimeout(function () {
-      //starts it over
-      ["up", "left", "right", "down"].forEach(element => {
-        document.getElementsByClassName("press-" + element)[0].classList.remove("active-button");
+    // timeout = setTimeout(function () {
+    //   //starts it over
+    //   ["up", "left", "right", "down"].forEach(element => {
+    //     document.getElementsByClassName("press-" + element)[0].classList.remove("active-button");
 
-      });
-      videos["stopped"].play();
-      videos[cruiseDirection].classList.add("hidden");
-      videos[cruiseDirection].classList.remove("current_video");
-      videos["stopped"].classList.add("current_video");
-      videos["stopped"].classList.remove("hidden");
-      bottomText.innerHTML = "Tom is <b><i>dancing<i/></b>";
-      cruiseDirection = "stopped";
-    }, 1500);
+    //   });
+    //   videos["stopped"].play();
+    //   videos[cruiseDirection].classList.add("hidden");
+    //   videos[cruiseDirection].classList.remove("current_video");
+    //   videos["stopped"].classList.add("current_video");
+    //   videos["stopped"].classList.remove("hidden");
+    //   bottomText.innerHTML = "Tom is <b><i>dancing<i/></b>";
+    //   cruiseDirection = "stopped";
+    // }, 1500);
   }
 
   function isMobileTablet() {
@@ -243,7 +245,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // document.getElementById("game-start-button").click();
     console.log(gamepad);
 
-
+    // if(!gameStarted){return}
 
     gamepad.on('right0', () => {gamepadUpdate("right");});
     gamepad.on('right1', () => {gamepadUpdate("right");});
